@@ -1,7 +1,16 @@
 # Iris Course Project - Programming and Scripting
 GMIT Course Project on exploration of Fisher's Iris Data Set
 
-## Table of Contents
+### Task
+> *Imagine that you are to give a brief presentation to your co-workers on the data set, where you explain to them what investigating a data set entails and how Python can be used to do it.
+The project entails researching the data set, and then writing documentation and code in the Python programming language based on that research*
+
+**Use:** Python (www.python.org) - Note: Installed with Anaconda (free and open source distribution, comes with over 250 data science packages - find it on: www.anaconda.com)
+
+**Project Plan:** Can be found in GitHub Issues
+
+
+# Table of Contents
 - 1: About Fisher's Iris Data Set
   - References
 
