@@ -1,7 +1,7 @@
 # Iris Course Project - Programming and Scripting
 GMIT Course Project on exploration of Fisher's Iris Data Set
 
-### Task
+### Task 
 > *Imagine that you are to give a brief presentation to your co-workers on the data set, where you explain to them what investigating a data set entails and how Python can be used to do it.
 The project entails researching the data set, and then writing documentation and code in the Python programming language based on that research*
 
@@ -14,6 +14,9 @@ The project entails researching the data set, and then writing documentation and
 - 1: About Fisher's Iris Data Set
   - References
 - 2: Packages used in this project
+- 3: Importing Packages
+- 4: Importing the Data
+- 5: Using Python to gather basic stats about a dataset
 
 ## 1: About Fisher's Iris Data Set
 
@@ -58,4 +61,91 @@ I found SciPy to provide a great starting point and resource, more information c
 ### 2. References
 (4) https://www.scipy.org/about.html
 (5) https://seaborn.pydata.org/
+
+## 3: Importing Packages
+
+As seen above there is a host of useful packages. To be able to use these, they have to be imported into Python, use `import` to do so:
+
+```
+import pandas as pd 
+
+import matplotlib.pyplot as plt 
+
+import seaborn as sb 
+
+import numpy as np 
+
+from scipy import stats
+```
+
+An `as`can be added after the import command to give the package a different name to call upon, which saves time as you are writing your commands. Going forward Python will recognise the names and call upon the packages if asked to do so.
+
+
+## 4: Importing the data
+
+``` 
+iris = pd.read_csv('iris.csv', header = None)
+```
+
+Reading the file through pandas by using `pandas.read_csv`reads a comma-separated csv into a DataFrame (I have called mine iris). It provides a tabular structure with labelled axes. 
+
+Note: Make sure to check whether the file has headers. If not, include `header = None`  as seen above. Otherwise pandas will assume that the first row of data is a header.
+
+As the csv file that I am using does not include a header, I have chosen to set a header with column names myself, to make analysis easier going forward:
+``` 
+iris.columns = ['sepal_length','sepal_width','petal_length','petal width','species']
+```
+
+There are several powerful options to clean up your data. I have chosen an easy command to exclude rows with missing data from my dataset: 
+``` 
+iris.dropna() #cleanup: delete rows with missing values
+```
+
+
+## 5: Using Python to gather basic stats about a dataset (v1)
+Python is a handy tool to explore data. If you use IPython it enables an interactive session to explore data and figure out the key characteristics of the data you are working with on the fly.  I have used some handy commands to have Python give me more information about the data:
+
+Print the whole DataFrame:
+``` 
+iris # have a look at the data set as a whole 
+```
+
+As the set seems to be very large, it might be enough to only have a sneak-peak at it and print only the first or last rows of the Dataframe. These commands came in very handy in double-checking whether I had assigned the column names properly:
+```
+iris.head(5) # show top 5 rows of data
+
+iris.tail(5) # show last 5 rows of data 
+```
+
+Find out how many rows and columns the Dataframe consists of:
+```
+iris.shape # displays rows and columns
+```
+
+Find out which unique values a certain column contains by using the built-in `set()` command. In this case it makes sense to find out how many different species of Iris were measured:
+```
+set(iris['species'])
+```
+
+Are the measurements evenly distributed across the different species?
+```
+iris['species'].value_counts()
+```
+
+Gather some basic statistical information about the dataframe, like the mean of the columns:
+```
+iris.describe() # returns basic stats about the dataframe
+iris.mean() # shows mean of columns
+```
+
+Python let’s you easily check the correlation between columns:
+```
+iris.corr() # returns correlation between columns
+```
+
+Note: All of these commands can also be used outside of IPython, however, you have to set them into a `print()` command to see the results displayed in the terminal.
+
+In order to try out a different approach and get a lot of the basic stats in one go without using an interactive IPython session, I have bundled up some useful commands in a regular Python function called `explore(x)`. This prints out a nicely formatted overview of all the key points:
+
+[insert code once finalized]
 
