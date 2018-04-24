@@ -103,7 +103,13 @@ iris.dropna() #cleanup: delete rows with missing values
 
 
 ## 5: Using Python to gather basic stats about a dataset (v1)
-Python is a handy tool to explore data. If you use IPython it enables an interactive session to explore data and figure out the key characteristics of the data you are working with on the fly.  I have used some handy commands to have Python give me more information about the data:
+Python is a handy tool to explore data. If you use IPython it enables an interactive session to explore data and figure out the key characteristics of the data you are working with on the fly. I have used some handy commands to have IPython give me more information about the data and provide a good starting point to find features worth investigating further. 
+
+Firstly, tell IPython to run Project.py:
+
+``` 
+In [1]: run Project.py
+``` 
 
 Print the whole DataFrame:
 ``` 
@@ -119,31 +125,67 @@ iris.tail(5) # show last 5 rows of data
 
 Find out how many rows and columns the Dataframe consists of:
 ```
-iris.shape # displays rows and columns
+In [2]: iris.shape # displays rows and columns
+Out[2]: (150, 5)
 ```
-
+ :arrow_right: IPython tells me that my iris DataFrame has 150 rows and 5 columns
+ 
 Find out which unique values a certain column contains by using the built-in `set()` command. In this case it makes sense to find out how many different species of Iris were measured:
 ```
-set(iris['species'])
+In [3]: set(iris['species'])
+Out[3]: {'Iris-setosa', 'Iris-versicolor', 'Iris-virginica'}
 ```
+:arrow_right: When looking at the data preview above, I could only see two species. However, after running above command it appears that there are 3 different species in the DataFrame.
 
 Are the measurements evenly distributed across the different species?
 ```
-iris['species'].value_counts()
+In [4]: iris['species'].value_counts()
+Out[4]:
+Iris-versicolor    50
+Iris-setosa        50
+Iris-virginica     50
+Name: species, dtype: int64
 ```
+:arrow_right:  In the next chapter I will explore whethere there are significant differences between the different species. It will be handy to compare the stats of the species against the overThe measurements are evenly distributed across the 3 species.
 
-Gather some basic statistical information about the dataframe, like the mean of the columns:
+Gather some basic statistical information about the dataframe, like the mean, min and max of the columns:
 ```
-iris.describe() # returns basic stats about the dataframe
-iris.mean() # shows mean of columns
+In [6]: iris.describe() # returns basic stats about the dataframe
+Out[6]:
+       sepal_length  sepal_width  petal_length  petal width
+count    150.000000   150.000000    150.000000   150.000000
+mean       5.843333     3.054000      3.758667     1.198667
+std        0.828066     0.433594      1.764420     0.763161
+min        4.300000     2.000000      1.000000     0.100000
+25%        5.100000     2.800000      1.600000     0.300000
+50%        5.800000     3.000000      4.350000     1.300000
+75%        6.400000     3.300000      5.100000     1.800000
+max        7.900000     4.400000      6.900000     2.500000
 ```
+```
+In [7]: iris.mean() # shows mean of columns
+Out[7]:
+sepal_length    5.843333
+sepal_width     3.054000
+petal_length    3.758667
+petal width     1.198667
+dtype: float64
+```
+:arrow_right:  There appears to be a lot of variation in the size of petals and sepals. In the next chapter I will therefore attempt to have a closer look at the possible differences between the 3 species and if these are more clear-cut.
 
-Python let’s you easily check the correlation between columns:
+Python let’s you easily check the correlation between columns. Correlations gives an indication of the relationship between values. It ranges between -1 and 1. A correlation of 0 indicates that there is no relationship between values, -1 indicates a perfect negative correlation (as one goes up, the other goes down), 1 a perfect positive correlation (as one goes up, the other goes up as well). 
 ```
-iris.corr() # returns correlation between columns
+In [8]: iris.corr() # returns correlation between columns
+Out[8]:
+              sepal_length  sepal_width  petal_length  petal width
+sepal_length      1.000000    -0.109369      0.871754     0.817954
+sepal_width      -0.109369     1.000000     -0.420516    -0.356544
+petal_length      0.871754    -0.420516      1.000000     0.962757
+petal width       0.817954    -0.356544      0.962757     1.000000
 ```
+:arrow_right: There appears to a strong positive correlation between petal size and sepal length, whereas it does not seem to correlate as much to the sepal width. It also appears that the longer the petal, the wider it is as well. Interestingly, there seems to be very little correlation between sepal length and sepal width. 
 
-Note: All of these commands can also be used outside of IPython, however, you have to set them into a `print()` command to see the results displayed in the terminal.
+Note: All of these commands can also be used outside of IPython, however, you have to set them into a `print()` command to see the results displayed in the terminal. This relationship does not seem to be the same with the sepals.
 
 In order to try out a different approach and get a lot of the basic stats in one go without using an interactive IPython session, I have bundled up some useful commands in a regular Python function called `explore(x)`. This prints out a nicely formatted overview of all the key points:
 
