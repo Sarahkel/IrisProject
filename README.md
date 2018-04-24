@@ -191,3 +191,6 @@ In order to try out a different approach and get a lot of the basic stats in one
 
 [insert code once finalized]
 
+### 5.1 Summary of basic stats
+ :bar_chart: With just a quick script, which can be used on different data sets as well, I was able to gather a lot of information about my dataset. I learned that the DataFrame has **150 rows, 5 columns** and contains **50 measurements each** of **Petal Length, Petal Width, Sepal Length, Sepal Width** of the **3 Iris species Iris setosa, Iris versicolor and Iris virginica**. By looking at the **mean** it is evident that the sepal is significantly longer and wider than the petal on average. However, the size of both seem to be **correlated**, as there appears to be a strong positive correlation between petal size and sepal length even though this correlation does not seem to extend to the sepal width. As the **min and max** of the different values stretches across quite a large range it will be interesting to slice the data by the different species and see how they differ as well as use visualizations on the data in the next chapter.
+
