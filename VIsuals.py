@@ -25,7 +25,11 @@ sb.stripplot(x='species', y='sepal_length', data=iris) # stripplot
 sb.swarmplot(x='species', y='sepal_length', data=iris) # to see how the data is distributed across the strip
 sb.boxplot(x='species', y='sepal_length', data=iris) # boxplot
 
-# combine 2 plots
+# Overview
+sb.boxplot(data = iris, orient = 'h') # as per https://seaborn.pydata.org/generated/seaborn.boxplot.html
+sb.barplot(data = iris, orient = 'v)
+
+# Combine 2 plots
 sb.violinplot(x='species', y='sepal_length', data=iris)
 sb.swarmplot(x='species', y='sepal_length', data=iris)
 # Issue is that data points aren't well visible. Solution:
@@ -33,5 +37,14 @@ sb.violinplot(x='species', y='sepal_length', data=iris)
 sb.swarmplot(x='species', y='sepal_length', data=iris, color='w')
 
 sb.pairplot(iris)
+           
+# Combination Swarmplot
+sb.swarmplot(color = 'red', data = setosa, orient = 'v')
+sb.swarmplot(color = 'blue', data = virginica, orient = 'v')
+sb.swarmplot(color = 'green', data = versicolor, orient = 'v')
+           
+# Correlation
+sb.jointplot(x='petal_width', y='petal_length', data=iris, kind = 'reg') # strong positive correlation
+sb.jointplot(x='petal_length', y='sepal_width', data=iris, kind = 'reg') # not a positive correlation
 
 print('done!')
