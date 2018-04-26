@@ -17,6 +17,7 @@ The project entails researching the data set, and then writing documentation and
 - 3: Importing Packages
 - 4: Importing the Data
 - 5: Using Python to gather basic stats about a dataset
+- 6: Using Visualisation
 
 ## 1: About Fisher's Iris Data Set
 
@@ -193,4 +194,58 @@ In order to try out a different approach and get a lot of the basic stats in one
 
 ### 5.1 Summary of basic stats
  :bar_chart: With just a quick script, which can be used on different data sets as well, I was able to gather a lot of information about my dataset. I learned that the DataFrame has **150 rows, 5 columns** and contains **50 measurements each** of **Petal Length, Petal Width, Sepal Length, Sepal Width** of the **3 Iris species Iris setosa, Iris versicolor and Iris virginica**. By looking at the **mean** it is evident that the sepal is significantly longer and wider than the petal on average. However, the size of both seem to be **correlated**, as there appears to be a strong positive correlation between petal size and sepal length even though this correlation does not seem to extend to the sepal width. As the **min and max** of the different values stretches across quite a large range it will be interesting to slice the data by the different species and see how they differ as well as use visualizations on the data in the next chapter.
+
+## 6. Using visualisation (v1)
+
+Using the above introduced packages, especially matplotlib and seaborn (which is built matplotlib), I have created graphs. These come in handy to present data to an audience. The graphs are customizable which also allows to adapt them to company branding.
+
+We have seen above that the range of the measurements appeared to be quite wide. I would now like to understand if any differences between the species can be seen. 
+
+### 6.1 Swarmplot
+
+A swarmplot is a great option to get a good look at the data. Each point represents one measurement:
+```
+sb.swarmplot(x='species', y='sepal_length', data=iris)
+sb.swarmplot(x='species', y='petal_length', data=iris)
+sb.swarmplot(x='species', y='sepal_width', data=iris)
+sb.swarmplot(x='species', y='petal_width', data=iris)
+```
+![swarm_petal width](https://user-images.githubusercontent.com/35706251/39330533-dda6b29c-4999-11e8-8ec5-282a44760e1f.png)
+![swarm_petal length](https://user-images.githubusercontent.com/35706251/39330537-de2e2e70-4999-11e8-9e28-e1b1767856ff.png)
+![swarm_sepal length](https://user-images.githubusercontent.com/35706251/39330535-ddd7312e-4999-11e8-88f6-6089c5a36ebb.png)
+![swarm_sepal width](https://user-images.githubusercontent.com/35706251/39330536-de02d4aa-4999-11e8-8040-7a0fada01e6a.png)
+
+:arrow_right: It is evident that there are indeed differences between the species to be observed. *Iris virginica* tends to be the largest of the species, with *Iris setosa* having a significantly smaller petal and shorter sepal, even though the sepal appears to be the widest of all three species. It can also be seen that there appears to be a good bit of overlap and similiarity between *Iris versicolo*r and *Iris Virginica* size-wise in all four characterists, whereas petal width and length of *Iris setosa* is considerably smaller to the point that there are no overlapping measurements.
+
+### 6.2 Layered Swarmplot
+
+Seaborn allows you to layer plots. I have sliced the dataset into the different species (https://www.kaggle.com/willvegapunk/iris-data-set)
+
+```
+setosa = iris[iris['species']=='Iris-setosa']
+virginica = iris[iris['species']=='Iris-virginica']
+versicolor = iris[iris['species']=='Iris-versicolor']
+```
+With this, it is possible for me to layer the swarmplots for the individual species and assign each its own color. (red = Iris setosa, green = Iris versicolor, blue = Iris virginica)
+```
+sb.swarmplot(color = 'red', data = setosa, orient = 'v')
+sb.swarmplot(color = 'blue', data = virginica, orient = 'v')
+sb.swarmplot(color = 'green', data = versicolor, orient = 'v')
+```
+![swarm_complete](https://user-images.githubusercontent.com/35706251/39333245-109f7a64-49a2-11e8-9160-d4b6087d9373.png)
+
+*(red = Iris setosa, green = Iris versicolor, blue = Iris virginica)*
+
+:arrow_right: Seeing all the species and characteristics in one chart makes it very evident that the main differenciating feature between the three is the length and width of their petals. The sepals, whereas not identical are a lot close in size and indeed it reconfirms that the only feature in which *Iris setosa*  boasts the biggest size is the sepal width.
+
+
+### 6.3 Visualising Correlation
+
+In chapter 5 the `.corr` command suggested a strong positive correlation between petal length and petal width. The following graph illustrates this very well: 
+
+```
+sb.jointplot(x='petal_width', y='petal_length', data=iris, kind = 'reg') 
+```
+
+![correlation_all](https://user-images.githubusercontent.com/35706251/39334964-ecd953dc-49a8-11e8-95b4-6e710b0ffe3f.png)
 
