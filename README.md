@@ -11,16 +11,16 @@ The project entails researching the data set, and then writing documentation and
 
 
 # Table of Contents
-- 1: About Fisher's Iris Data Set
-  - 1.1: References
-- 2: Packages used in this project
-  - 2.1: References
-- 3: Importing Packages
-- 4: Importing the Data
-- 5: Using Python to gather basic stats about a dataset
-  5.1: Summary
-- 6: Using Visualisation
-- 7: Conclusion
+- 1: [About Fisher's Iris Data Set](https://github.com/Sarahkel/IrisProject/blob/master/README.md#1-about-fishers-iris-data-set)
+  - 1.1: [References](https://github.com/Sarahkel/IrisProject/blob/master/README.md#11-references)
+- 2: [Packages used in this project](https://github.com/Sarahkel/IrisProject/blob/master/README.md#2-packages-used-in-this-project)
+  - 2.1: [References](https://github.com/Sarahkel/IrisProject/blob/master/README.md#21-references)
+- 3: [Importing Packages](https://github.com/Sarahkel/IrisProject/blob/master/README.md#3-importing-packages)
+- 4: [Importing the Data](https://github.com/Sarahkel/IrisProject/blob/master/README.md#4-importing-the-data)
+- 5: [Using Python to gather basic stats about a dataset](https://github.com/Sarahkel/IrisProject/blob/master/README.md#5-using-python-to-gather-basic-stats-about-a-dataset-v1)
+  - 5.1: [Summary of basic stats](https://github.com/Sarahkel/IrisProject/blob/master/README.md#51-summary-of-basic-stats)
+- 6: [Using Visualisation](https://github.com/Sarahkel/IrisProject/blob/master/README.md#6-using-visualisation-v1)
+- 7: [Conclusion](https://github.com/Sarahkel/IrisProject/blob/master/README.md#7-conclusion)
 
 ## 1: About Fisher's Iris Data Set
 
