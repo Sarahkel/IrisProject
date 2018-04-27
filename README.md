@@ -189,6 +189,20 @@ petal width       0.817954    -0.356544      0.962757     1.000000
 ```
 :arrow_right: There appears to a strong positive correlation between petal size and sepal length, whereas it does not seem to correlate as much to the sepal width. It also appears that the longer the petal, the wider it is as well. Interestingly, there seems to be very little correlation between sepal length and sepal width. 
 
+With a data set like this it makes sense to compare the different species against each other. For this, I have sliced the dataset into the different species:
+
+```
+setosa = iris[iris['species']=='Iris-setosa']
+virginica = iris[iris['species']=='Iris-virginica']
+versicolor = iris[iris['species']=='Iris-versicolor']
+# see https://www.kaggle.com/willvegapunk/iris-data-set
+```
+Now I can use the very same commands to get insights into a particular subset of the data. I have chosen to print out the `.mean` values: 
+
+![screenshots mean](https://user-images.githubusercontent.com/35706251/39363592-b9a2bb78-4a22-11e8-9d9c-234016cd0cb1.png)
+
+:arrow_right: There appear to be significant differences in the sizes of the species, with the petal being the most distinguished. We can also see that *Iris setosa* is by far the smallest. In the next chapter I will use plots to have a look at how to measurements present themselves.
+
 Note: All of these commands can also be used outside of IPython, however, you have to set them into a `print()` command to see the results displayed in the terminal. This relationship does not seem to be the same with the sepals.
 
 In order to try out a different approach and get a lot of the basic stats in one go without using an interactive IPython session, I have bundled up some useful commands in a regular Python function called `explore(x)`. This prints out a nicely formatted overview of all the key points:
@@ -202,7 +216,17 @@ In order to try out a different approach and get a lot of the basic stats in one
 
 Using the above introduced packages, especially matplotlib and seaborn (which is built matplotlib), I have created graphs. These come in handy to present data to an audience. The graphs are customizable which also allows to adapt them to company branding.
 
-We have seen above that the range of the measurements appeared to be quite wide. I would now like to understand if any differences between the species can be seen. 
+First off, let's have a look at the data across all features in a boxplot. A boxplot provides a lot of information in one plot. We can see the median (black line in the box), with the box itself presenting the middle 50% of data. The black lines going outwards of the box show how far the range spans. The little black dots represent outliers. Where the median line liest within the box also gives an indication of how the data is skewed.
+
+```
+sb.boxplot(data = iris, orient = 'h')
+```
+
+![boxplot_complete](https://user-images.githubusercontent.com/35706251/39364156-e5b9e7a2-4a24-11e8-977c-a03e31ac4ce6.png)
+
+:arrow_right: This boxplot gives an overview of how wide the measurements span and where their median and the bulk of the measurements fall. Sepal Width shows the smallest variation with petal length showing the most variation of measurements.
+
+I would now like to understand if any differences between the species can be seen. 
 
 ### 6.1 Swarmplot
 
@@ -237,15 +261,9 @@ sb.swarmplot(x='species', y='sepal_width', data=iris)
 
 ### 6.2 Layered Swarmplot
 
-Seaborn allows you to layer plots by bundling differet plots and running them in the same plt.show() command. I have sliced the dataset into the different species:
+Seaborn allows you to layer plots by bundling differet plots and running them in the same plt.show() command.
+With this, it is possible for me to layer the swarmplots for the individual species and assign each its own color. (red = *Iris setosa*, green = *Iris versicolor*, blue = *Iris virginica*)
 
-```
-setosa = iris[iris['species']=='Iris-setosa']
-virginica = iris[iris['species']=='Iris-virginica']
-versicolor = iris[iris['species']=='Iris-versicolor']
-# see https://www.kaggle.com/willvegapunk/iris-data-set
-```
-With this, it is possible for me to layer the swarmplots for the individual species and assign each its own color. (red = Iris setosa, green = Iris versicolor, blue = Iris virginica)
 ```
 sb.swarmplot(color = 'red', data = setosa, orient = 'v')
 sb.swarmplot(color = 'blue', data = virginica, orient = 'v')
