@@ -12,18 +12,21 @@ The project entails researching the data set, and then writing documentation and
 
 # Table of Contents
 - 1: About Fisher's Iris Data Set
-  - References
+  - 1.1: References
 - 2: Packages used in this project
+  - 2.1: References
 - 3: Importing Packages
 - 4: Importing the Data
 - 5: Using Python to gather basic stats about a dataset
+  5.1: Summary
 - 6: Using Visualisation
+- 7: Conclusion
 
 ## 1: About Fisher's Iris Data Set
 
 The data of the Iris Data Set was collected in 1935 by botanist Edgar Anderson. He measured the sepal and petal length and width of 3 different Iris species: *Iris setosa*, *Iris versicolor* and *Iris virginica*. The data set received attention when it was used by British statistician and geneticist Sir Ronald Aylmer Fisher as an example in multivariant discriminate analysis a year later. (1,2)
 
- ![Petal and sepal demonstrated on species versicolor](http://suruchifialoke.com/img/icon_iris.png)
+ <img src="http://suruchifialoke.com/img/icon_iris.png" alt="Petal and sepal demonstrated on species versicolor" height="200" />
  
  *[Picture 1](http://suruchifialoke.com/img/icon_iris.png) Petal and sepal demonstrated on species Iris versicolor*
 
@@ -34,12 +37,12 @@ Its appeal for analysis is fittingly described by an online user (3):
 
 > “simple but challenging”
 
-### 1. References
+### 1.1: References
 (1)
 (2)
 (3)
 
-## 2. Packages used in this project
+## 2: Packages used in this project
 
 Python has become very popular in Data Science. Packages and built-ins make data analysis with Python accessible and efficient, even if you aren’t an expert programmer.
 
@@ -59,7 +62,7 @@ The easiest way to avail of a variety of useful packages for Python is to downlo
 
 I found SciPy to provide a great starting point and resource, more information can be found on: https://www.scipy.org/index.html.
 
-### 2. References
+### 2.1: References
 (4) https://www.scipy.org/about.html
 (5) https://seaborn.pydata.org/
 
@@ -204,27 +207,43 @@ We have seen above that the range of the measurements appeared to be quite wide.
 ### 6.1 Swarmplot
 
 A swarmplot is a great option to get a good look at the data. Each point represents one measurement:
+
+
 ```
-sb.swarmplot(x='species', y='sepal_length', data=iris)
-sb.swarmplot(x='species', y='petal_length', data=iris)
-sb.swarmplot(x='species', y='sepal_width', data=iris)
 sb.swarmplot(x='species', y='petal_width', data=iris)
 ```
 ![swarm_petal width](https://user-images.githubusercontent.com/35706251/39330533-dda6b29c-4999-11e8-8ec5-282a44760e1f.png)
+
+```
+sb.swarmplot(x='species', y='petal_length', data=iris)
+```
+
 ![swarm_petal length](https://user-images.githubusercontent.com/35706251/39330537-de2e2e70-4999-11e8-9e28-e1b1767856ff.png)
+
+```
+sb.swarmplot(x='species', y='sepal_length', data=iris)
+```
+
 ![swarm_sepal length](https://user-images.githubusercontent.com/35706251/39330535-ddd7312e-4999-11e8-88f6-6089c5a36ebb.png)
+
+```
+sb.swarmplot(x='species', y='sepal_width', data=iris)
+```
 ![swarm_sepal width](https://user-images.githubusercontent.com/35706251/39330536-de02d4aa-4999-11e8-8040-7a0fada01e6a.png)
+
+
 
 :arrow_right: It is evident that there are indeed differences between the species to be observed. *Iris virginica* tends to be the largest of the species, with *Iris setosa* having a significantly smaller petal and shorter sepal, even though the sepal appears to be the widest of all three species. It can also be seen that there appears to be a good bit of overlap and similiarity between *Iris versicolo*r and *Iris Virginica* size-wise in all four characterists, whereas petal width and length of *Iris setosa* is considerably smaller to the point that there are no overlapping measurements.
 
 ### 6.2 Layered Swarmplot
 
-Seaborn allows you to layer plots. I have sliced the dataset into the different species (https://www.kaggle.com/willvegapunk/iris-data-set)
+Seaborn allows you to layer plots by bundling differet plots and running them in the same plt.show() command. I have sliced the dataset into the different species:
 
 ```
 setosa = iris[iris['species']=='Iris-setosa']
 virginica = iris[iris['species']=='Iris-virginica']
 versicolor = iris[iris['species']=='Iris-versicolor']
+# see https://www.kaggle.com/willvegapunk/iris-data-set
 ```
 With this, it is possible for me to layer the swarmplots for the individual species and assign each its own color. (red = Iris setosa, green = Iris versicolor, blue = Iris virginica)
 ```
@@ -238,14 +257,35 @@ sb.swarmplot(color = 'green', data = versicolor, orient = 'v')
 
 :arrow_right: Seeing all the species and characteristics in one chart makes it very evident that the main differenciating feature between the three is the length and width of their petals. The sepals, whereas not identical are a lot close in size and indeed it reconfirms that the only feature in which *Iris setosa*  boasts the biggest size is the sepal width.
 
+This can also be observed in the following graphs, which show the measurements per species for sepal and petal using `hue`: 
+
+```
+sb.swarmplot(x='sepal_width', y='sepal_length', hue = 'species', data=iris)
+```
+
+![swarm_sepal](https://user-images.githubusercontent.com/35706251/39359692-f2dfc10c-4a12-11e8-8500-1649f61b1089.png)
+
+```
+sb.swarmplot(x='petal_width', y='petal_length', hue = 'species', data=iris)
+```
+
+![swarm petal](https://user-images.githubusercontent.com/35706251/39359693-f302bf68-4a12-11e8-8029-f921b915ef20.png)
+
+
 
 ### 6.3 Visualising Correlation
 
-In chapter 5 the `.corr` command suggested a strong positive correlation between petal length and petal width. The following graph illustrates this very well: 
+In chapter 5 the `.corr` command suggested a strong positive correlation between petal length and petal width. The following jointplot illustrates this very well: 
 
 ```
 sb.jointplot(x='petal_width', y='petal_length', data=iris, kind = 'reg') 
 ```
 
 ![correlation_all](https://user-images.githubusercontent.com/35706251/39334964-ecd953dc-49a8-11e8-95b4-6e710b0ffe3f.png)
+
+
+:arrow_right: The joinplot not only underlines the correlation, it also adds extra information. It shows the [Pearson Correlation Coefficient](https://en.wikipedia.org/wiki/Pearson_correlation_coefficient) to be very close to 1 (positive correlation). It also provides a [p-value](http://www.dummies.com/education/math/statistics/what-a-p-value-tells-you-about-statistical-data/),  which is used in statistics to determine the significance of results.
+
+## 7. Conclusion
+
 
