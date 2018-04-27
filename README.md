@@ -306,4 +306,15 @@ sb.jointplot(x='petal_width', y='petal_length', data=iris, kind = 'reg')
 
 ## 7. Conclusion
 
+In this project I attempted to analyse the Iris Data Set using Python and available packages to showcase not only a data analysis but more importantly how Python can support analysis.
+
+Programming can be intimidating, and many users would expect to need a vast pre-existing knowledge of both mathematics and programming to use Python efficiently. I have introduced popular packages, which I have played around with over the duration of this projects and which can be used freely with Python such as pandas and matplotlib and how to avail of them and where to find tutorials on how to use them. 
+
+I showcased how commands built into those packages allow a user to explore the given data set and effortlessly return not only the shape of the dataset in question but also statistical values, such as mean, min and max. I have written a function to print out a nicely formatted basic summary of the dataset as well.
+
+Taking these insights, I have set out to showcase how visualisation can be used to dig deeper and to explore how the different Iris species differ from one another. I was able to show that the three species differ in appearance and was also able to visualize the apparent correlation between certain features. 
+
+Knowing that the three species differ in their features gives the user an interesting option to dive deeper and maybe even use Python to explore machine learning with the data set. An interesting notebook on machine learning with the Iris data set can be found on [Kaggle]( https://www.kaggle.com/jchen2186/machine-learning-with-iris-dataset). 
+
+
 
