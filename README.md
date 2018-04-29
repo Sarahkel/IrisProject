@@ -45,9 +45,11 @@ Its appeal for analysis is fittingly described by an online user (3):
 > “simple but challenging”
 
 ### 1.1: References
-(1)
-(2)
-(3)
+(1) Python Data Analytics: Data Analysis and Science using pandas, matplotlib and the Python Programming Language; Fabio Nelli, 2015; p. 238
+
+(2) Data Analytics: Models and Algorithms for Intelligent Data Analysis; Thomas A. Runkler; 2016; p. 5
+
+(3) https://stats.stackexchange.com/questions/74776/what-aspects-of-the-iris-data-set-make-it-so-successful-as-an-example-teaching
 
 ## 2: Packages used in this project
 
@@ -316,7 +318,7 @@ sb.jointplot(x='petal_width', y='petal_length', data=iris, kind = 'reg')
 
 :arrow_right: The joinplot not only underlines the correlation, it also adds extra information. It shows the [Pearson Correlation Coefficient](https://en.wikipedia.org/wiki/Pearson_correlation_coefficient) to be very close to 1 (positive correlation). It also provides a [p-value](http://www.dummies.com/education/math/statistics/what-a-p-value-tells-you-about-statistical-data/),  which is used in statistics to determine the significance of results.
 
-6.4: Summary of Visualisation findings
+### 6.4: Summary of Visualisation findings
 
 In this chapter I set out to illustrate the differences between the species. The analysis shows that there are significant differences between the three flower species. A boxplot demonstrates that the widest variation in size occurs in the length of sepal and petal, with the petal length having the most variation. Swarmplots showed that the most distinguishing feature appears to be the petal. Species *Iris setosa* came out as the smallest of the three, however as the one with the widest sepal, *Iris virginica* is the largest. These findings were illustrated in one layered swarmplot as well, showing again how different the petal is from the other variables. The finding from the basic statistics chapter, indicates a strong positive correlation between petal length and petal width. A swarmplot of the leaf indicated a strong positive correlation which I was able to illustrate more clearly in a jointplot which also indicates the Pearson coefficient and statistical significance of the correlation.
 
@@ -326,9 +328,9 @@ In this project I attempted to analyse the Iris Data Set using Python and availa
 
 Programming can be intimidating, and many users would expect to need a vast pre-existing knowledge of both mathematics and programming to use Python efficiently. I have introduced popular packages, which I have played around with over the duration of this projects and which can be used freely with Python such as pandas and matplotlib and how to avail of them and where to find tutorials on how to use them. 
 
-I showcased how commands built into those packages allow a user to explore the given data set and effortlessly return not only the shape of the dataset in question but also statistical values, such as mean, min and max. I have written a function to print out a nicely formatted basic summary of the dataset as well.
+I showcased how commands built into those packages allow a user to explore the given data set and effortlessly return not only the shape of the dataset in question but also statistical values, such as mean, min and max. I have written a function to print out a nicely formatted basic summary of the dataset as well. Find a summary of the analysis [here](https://github.com/Sarahkel/IrisProject/blob/master/README.md#51-summary-of-basic-stats).
 
-Taking these insights, I have set out to showcase how visualisation can be used to dig deeper and to explore how the different Iris species differ from one another. I was able to show that the three species differ in appearance and was also able to visualize the apparent correlation between certain features. 
+Taking these insights, I have set out to showcase how visualisation can be used to dig deeper and to explore how the different Iris species differ from one another. I was able to show that the three species differ in appearance and was also able to visualize the apparent correlation between certain features. Find a summary of the analysis [here]().
 
 Knowing that the three species differ in their features gives the user an interesting option to dive deeper and maybe even use Python to explore machine learning with the data set. An interesting notebook on machine learning with the Iris data set can be found on [Kaggle]( https://www.kaggle.com/jchen2186/machine-learning-with-iris-dataset). 
 
