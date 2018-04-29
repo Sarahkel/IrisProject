@@ -46,21 +46,45 @@ iris.cov() # returns co-variance between columns (not used)
 iris.corr() # returns correlation between columns
 
 # Python function to print out a summary of some handy stats for a dataset x (use x = iris for the purpose of this project)
+x = iris 
+
+
 def explore(x):
-    print('To begin, lets find out how many rows and columns our dataframe x has:')
+    print('To begin, lets find out how many rows and columns our dataframe has:')
     print(x.shape)
-    print('Below you can see the first 5 rows of the dataframe x')
+    print('Below you can see the first 5 rows of the dataframe')
     print(x.head(5))
-    print()
-    print('Below you can see the last 5 rows of the dataframe x')
+    print() # empty for formatting
+    print('Below you can see the last 5 rows of the dataframe')
     print(x.tail(5))
     print()
     print('Below you can see the unique values for the column -species- and how many instances of these are found:')
-    print(set(x['species'])) # change this for any column you are interested in
-    print(x['species'].value_counts()) # change this for any column you are interested in
+    print(set(x['species'])) 
+    print(x['species'].value_counts())
     print()
     print('The following provides you with some basic stats about the dataframe:')
     print(x.describe()) # returns basic stats about the dataframe
+    print()
+    print('Lets look at the means of the different species:')
+    print()
+    # split per species, adapted from: https://www.kaggle.com/willvegapunk/iris-data-set
+    setosa = iris[iris['species']=='Iris-setosa']
+    virginica = iris[iris['species']=='Iris-virginica']
+    versicolor = iris[iris['species']=='Iris-versicolor']
+    print('Setosa means are:')
+    print(setosa.mean())
+    print('Virginica means are:')
+    print(virginica.mean())
+    print('Means for Versicolor are:')
+    print(versicolor.mean())
+    print()
+    print('Correlation Matrix:')
+    print(iris.corr())
+
+explore(iris)
+
+print()
+print('done!')
 
 
 # Tutorials and useful documentation concerning used packages:
