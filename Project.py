@@ -1,6 +1,7 @@
 # Sarah Scholz, 16/04/2018
 # Iris Data Set Exploration Project scripts and code; for explanations refer to README
 
+# Chapter 3
 # IMPORT relevant packages, libraries etc.
 import pandas as pd 
 import matplotlib.pyplot as plt 
@@ -8,33 +9,40 @@ import seaborn as sb
 import numpy as np 
 from scipy import stats
 
+# Chapter 4
 # PREPARING THE DATA
 # Read file and format columns
 iris = pd.read_csv('iris.csv', header = None) # include header=None if you wish to assign column names as in the next line. I initially forgot this and ended up with my data set one line short
-iris.columns = ['sepal_length','sepal_width','petal_length','petal width','species']
+iris.columns = ['sepal_length','sepal_width','petal_length','petal_width','species']
 iris.dropna() # cleanup: delete rows with missing values
+
+# Chapter 5
+
+
+# BASIC STATS, data exploration
+
+# Commands to be used in IPython, for interactive exploration (else needs to be printed):
+iris # have a look at the data set as a whole (however, python might hide some rows due to length)
+# As IPython will shorten the data set you might want to double check how many species are in the data:
+iris.head(5) # show top 5 rows of data
+iris.tail(5) # show last 5 rows of data
+iris.shape # displays rows and columns
+set(iris['species']) # set is an in-built function in Python which will show you unique values of a given list
+iris['species'].value_counts()
+iris.describe() # returns basic stats about the dataframe
+iris.mean() # returns mean values for columns
 
 # split per species, adapted from: https://www.kaggle.com/willvegapunk/iris-data-set
 setosa = iris[iris['species']=='Iris-setosa']
 virginica = iris[iris['species']=='Iris-virginica']
 versicolor = iris[iris['species']=='Iris-versicolor']
-
-# Chapter3: BASIC STATS, data exploration
-
-# Commands to be used in IPython, for interactive exploration (else needs to be printed):
-iris # have a look at the data set as a whole (however, python might hide some rows due to length)
-iris.shape # displays rows and columns
-iris.head(5) # show top 5 rows of data
-iris.tail(5) # show last 5 rows of data
-# As IPython will shorten the data set you might want to double check how many species are in the data:
-set(iris['species']) # set is an in-built function in Python which will show you unique values of a given list
-iris['species'].value_counts()
-iris.describe() # returns basic stats about the dataframe
-iris.mean() # returns mean values for columns
+# return mean values
 setosa.mean()
 virginica.mean()
 versicolor.mean()
-iris.cov() # returns co-variance between columns
+
+# Covariance and correlation
+iris.cov() # returns co-variance between columns (not used)
 iris.corr() # returns correlation between columns
 
 # Python function to print out a summary of some handy stats for a dataset x (use x = iris for the purpose of this project)
@@ -53,8 +61,6 @@ def explore(x):
     print()
     print('The following provides you with some basic stats about the dataframe:')
     print(x.describe()) # returns basic stats about the dataframe
-# Not really universally usable. Maybe find more elegant solution for species column
-
 
 
 # Tutorials and useful documentation concerning used packages:
