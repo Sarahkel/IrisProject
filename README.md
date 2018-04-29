@@ -73,6 +73,7 @@ I found SciPy to provide a great starting point and resource, more information c
 
 ### 2.1: References
 (4) https://www.scipy.org/about.html
+
 (5) https://seaborn.pydata.org/
 
 ## 3: Importing Packages
@@ -220,7 +221,7 @@ petal width       0.817954    -0.356544      0.962757     1.000000
 
 In order to try out a different approach and get a lot of the basic stats in one go without using an interactive IPython session, I have bundled up some useful commands in a regular Python function called `explore(x)`. This prints out a nicely formatted overview of all the key points:
 
-[insert code once finalized]
+Find it in [Project.py](https://github.com/Sarahkel/IrisProject/blob/master/Project.py) Line 48 - 87.
 
 ### 5.1 Summary of basic stats
  :bar_chart: With just a quick script, I was able to gather a lot of information about my dataset. I learned that the DataFrame has **150 rows, 5 columns** and contains **50 measurements each** of **Petal Length, Petal Width, Sepal Length, Sepal Width** of the **3 Iris species Iris setosa, Iris versicolor and Iris virginica**. By looking at the **mean** it is evident that the sepal is significantly longer and wider than the petal on average. However, the size of both seem to be **correlated**, as there appears to be a strong positive correlation between petal size and sepal length even though this correlation does not seem to extend to the sepal width. As the **min and max** of the different values stretches across quite a large range it will be interesting to slice the data by the different species and see how they differ as well as use visualizations on the data in the next chapter.
