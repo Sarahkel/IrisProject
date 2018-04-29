@@ -5,9 +5,12 @@ GMIT Course Project on exploration of Fisher's Iris Data Set
 > *Imagine that you are to give a brief presentation to your co-workers on the data set, where you explain to them what investigating a data set entails and how Python can be used to do it.
 The project entails researching the data set, and then writing documentation and code in the Python programming language based on that research*
 
-**Use:** Python (www.python.org) - Note: Installed with Anaconda (free and open source distribution, comes with over 250 data science packages - find it on: www.anaconda.com)
+**Use:** Python (www.python.org) - Note: Installed with Anaconda (free and open source distribution, comes with data science packages - find it on: www.anaconda.com)
 
 **Project Plan:** Can be found in GitHub Issues
+
+**How to use this code**:
+The code for this project was written in Python and can be found in the files [Project.py]( https://github.com/Sarahkel/IrisProject/blob/master/Project.py) and [Visuals.py]( https://github.com/Sarahkel/IrisProject/blob/master/VIsuals.py). I suggest running the commands as needed in an interactive session in IPython to explore the data interactively. When using Python please note that you may have to add `print()` statements around the code in order for the result to be printed to the terminal. Also `plt.show()` may need to be added after plot commands in order for the plot to be shown in a separate window.
 
 
 # Table of Contents
@@ -20,6 +23,9 @@ The project entails researching the data set, and then writing documentation and
 - 5: [Using Python to gather basic stats about a dataset](https://github.com/Sarahkel/IrisProject/blob/master/README.md#5-using-python-to-gather-basic-stats-about-a-dataset-v1)
   - 5.1: [Summary of basic stats](https://github.com/Sarahkel/IrisProject/blob/master/README.md#51-summary-of-basic-stats)
 - 6: [Using Visualisation](https://github.com/Sarahkel/IrisProject/blob/master/README.md#6-using-visualisation-v1)
+  - 6.1: Swarmplots
+  - 6.2: Layered Swarmplot
+  - 6.3: Visualising Correlation
   - 6.4: Summary of Visualisation findings
 - 7: [Conclusion](https://github.com/Sarahkel/IrisProject/blob/master/README.md#7-conclusion)
 
@@ -107,8 +113,11 @@ iris.dropna() #cleanup: delete rows with missing values
 ```
 
 
-## 5: Using Python to gather basic stats about a dataset (v1)
-Python is a handy tool to explore data. If you use IPython it enables an interactive session to explore data and figure out the key characteristics of the data you are working with on the fly. I have used some handy commands to have IPython give me more information about the data and provide a good starting point to find features worth investigating further. 
+## 5: Using Python to gather basic stats about a dataset
+
+*Find the code used in this chapter in [Project.py]( https://github.com/Sarahkel/IrisProject/blob/master/Project.py)* 
+
+Python is a useful tool to explore data. If you use IPython it enables an interactive session to explore data and figure out the key characteristics of the data you are working with on the fly. I have used some useful commands to have IPython give me more information about the data and provide a good starting point to find features worth investigating further. 
 
 Firstly, tell IPython to run Project.py:
 
@@ -121,7 +130,7 @@ Print the whole DataFrame:
 iris # have a look at the data set as a whole 
 ```
 
-As the set seems to be very large, it might be enough to only have a sneak-peak at it and print only the first or last rows of the Dataframe. These commands came in very handy in double-checking whether I had assigned the column names properly:
+As the set seems to be very large, it might be enough to only have a sneak-peak at it and print only the first or last rows of the Dataframe. These commands came in very useful in double-checking whether I had assigned the column names properly:
 ```
 iris.head(5) # show top 5 rows of data
 
@@ -151,7 +160,7 @@ Iris-setosa        50
 Iris-virginica     50
 Name: species, dtype: int64
 ```
-:arrow_right:  In the next chapter I will explore whethere there are significant differences between the different species. It will be handy to compare the stats of the species against the overThe measurements are evenly distributed across the 3 species.
+:arrow_right:  In the next chapter I will explore whethere there are significant differences between the different species. It will be useful to compare the stats of the species against the overThe measurements are evenly distributed across the 3 species.
 
 Gather some basic statistical information about the dataframe, like the mean, min and max of the columns:
 ```
@@ -178,18 +187,6 @@ dtype: float64
 ```
 :arrow_right:  There appears to be a lot of variation in the size of petals and sepals. In the next chapter I will therefore attempt to have a closer look at the possible differences between the 3 species and if these are more clear-cut.
 
-Python let’s you easily check the correlation between columns. Correlations gives an indication of the relationship between values. It ranges between -1 and 1. A correlation of 0 indicates that there is no relationship between values, -1 indicates a perfect negative correlation (as one goes up, the other goes down), 1 a perfect positive correlation (as one goes up, the other goes up as well). 
-```
-In [8]: iris.corr() # returns correlation between columns
-Out[8]:
-              sepal_length  sepal_width  petal_length  petal width
-sepal_length      1.000000    -0.109369      0.871754     0.817954
-sepal_width      -0.109369     1.000000     -0.420516    -0.356544
-petal_length      0.871754    -0.420516      1.000000     0.962757
-petal width       0.817954    -0.356544      0.962757     1.000000
-```
-:arrow_right: There appears to a strong positive correlation between petal size and sepal length, whereas it does not seem to correlate as much to the sepal width. It also appears that the longer the petal, the wider it is as well. Interestingly, there seems to be very little correlation between sepal length and sepal width. 
-
 With a data set like this it makes sense to compare the different species against each other. For this, I have sliced the dataset into the different species:
 
 ```
@@ -204,7 +201,19 @@ Now I can use the very same commands to get insights into a particular subset of
 
 :arrow_right: There appear to be significant differences in the sizes of the species, with the petal being the most distinguished. We can also see that *Iris setosa* is by far the smallest. In the next chapter I will use plots to have a look at how to measurements present themselves.
 
-Note: All of these commands can also be used outside of IPython, however, you have to set them into a `print()` command to see the results displayed in the terminal. This relationship does not seem to be the same with the sepals.
+**Correlation**
+
+Python let’s you easily check the correlation between columns. Correlations gives an indication of the relationship between values. It ranges between -1 and 1. A correlation of 0 indicates that there is no relationship between values, -1 indicates a perfect negative correlation (as one goes up, the other goes down), 1 a perfect positive correlation (as one goes up, the other goes up as well). 
+```
+In [8]: iris.corr() # returns correlation between columns
+Out[8]:
+              sepal_length  sepal_width  petal_length  petal width
+sepal_length      1.000000    -0.109369      0.871754     0.817954
+sepal_width      -0.109369     1.000000     -0.420516    -0.356544
+petal_length      0.871754    -0.420516      1.000000     0.962757
+petal width       0.817954    -0.356544      0.962757     1.000000
+```
+:arrow_right: There appears to a strong positive correlation between petal size and sepal length, whereas it does not seem to correlate as much to the sepal width. It also appears that the longer the petal, the wider it is as well. Interestingly, there seems to be very little correlation between sepal length and sepal width. 
 
 In order to try out a different approach and get a lot of the basic stats in one go without using an interactive IPython session, I have bundled up some useful commands in a regular Python function called `explore(x)`. This prints out a nicely formatted overview of all the key points:
 
@@ -213,9 +222,11 @@ In order to try out a different approach and get a lot of the basic stats in one
 ### 5.1 Summary of basic stats
  :bar_chart: With just a quick script, which can be used on different data sets as well, I was able to gather a lot of information about my dataset. I learned that the DataFrame has **150 rows, 5 columns** and contains **50 measurements each** of **Petal Length, Petal Width, Sepal Length, Sepal Width** of the **3 Iris species Iris setosa, Iris versicolor and Iris virginica**. By looking at the **mean** it is evident that the sepal is significantly longer and wider than the petal on average. However, the size of both seem to be **correlated**, as there appears to be a strong positive correlation between petal size and sepal length even though this correlation does not seem to extend to the sepal width. As the **min and max** of the different values stretches across quite a large range it will be interesting to slice the data by the different species and see how they differ as well as use visualizations on the data in the next chapter.
 
-## 6. Using visualisation (v1)
+## 6. Using visualisation
 
-Using the above introduced packages, especially matplotlib and seaborn (which is built matplotlib), I have created graphs. These come in handy to present data to an audience. The graphs are customizable which also allows to adapt them to company branding.
+*Find the code used in this chapter in [Visuals.py]( https://github.com/Sarahkel/IrisProject/blob/master/VIsuals.py)*
+
+Using the above introduced packages, especially matplotlib and seaborn (which is built matplotlib), I have created graphs. These are useful to present data to an audience. The graphs are customizable which also allows to adapt them to company branding.
 
 First off, let's have a look at the data across all features in a boxplot. A boxplot provides a lot of information in one plot. We can see the median (black line in the box), with the box itself presenting the middle 50% of data. The black lines going outwards of the box show how far the range spans. The little black dots represent outliers. Where the median line liest within the box also gives an indication of how the data is skewed.
 
@@ -229,7 +240,7 @@ sb.boxplot(data = iris, orient = 'h')
 
 I would now like to understand if any differences between the species can be seen. 
 
-### 6.1 Swarmplot
+### 6.1 Swarmplots
 
 A swarmplot is a great option to get a good look at the data. Each point represents one measurement:
 
