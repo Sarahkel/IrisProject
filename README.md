@@ -219,6 +219,8 @@ petal width       0.817954    -0.356544      0.962757     1.000000
 ```
 :arrow_right: There appears to a strong positive correlation between petal size and sepal length, whereas it does not seem to correlate as much to the sepal width. It also appears that the longer the petal, the wider it is as well. Interestingly, there seems to be very little correlation between sepal length and sepal width. 
 
+**Function for Print-out**
+
 In order to try out a different approach and get a lot of the basic stats in one go without using an interactive IPython session, I have bundled up some useful commands in a regular Python function called `explore(x)`. This prints out a nicely formatted overview of all the key points:
 
 Find it in [Project.py](https://github.com/Sarahkel/IrisProject/blob/master/Project.py) Line 48 - 87.
