@@ -23,10 +23,10 @@ The code for this project was written in Python and can be found in the files [P
 - 5: [Using Python to gather basic stats about a dataset](https://github.com/Sarahkel/IrisProject/blob/master/README.md#5-using-python-to-gather-basic-stats-about-a-dataset-v1)
   - 5.1: [Summary of basic stats](https://github.com/Sarahkel/IrisProject/blob/master/README.md#51-summary-of-basic-stats)
 - 6: [Using Visualisation](https://github.com/Sarahkel/IrisProject/blob/master/README.md#6-using-visualisation-v1)
-  - 6.1: Swarmplots
-  - 6.2: Layered Swarmplot
-  - 6.3: Visualising Correlation
-  - 6.4: Summary of Visualisation findings
+  - 6.1: [Swarmplots](https://github.com/Sarahkel/IrisProject#61-swarmplots)
+  - 6.2: [Layered Swarmplot](https://github.com/Sarahkel/IrisProject#62-layered-swarmplot)
+  - 6.3: [Visualising Correlation](https://github.com/Sarahkel/IrisProject#63-visualising-correlation)
+  - 6.4: [Summary of Visualisation findings](https://github.com/Sarahkel/IrisProject#64-summary-of-visualisation-findings)
 - 7: [Conclusion](https://github.com/Sarahkel/IrisProject/blob/master/README.md#7-conclusion)
 
 ## 1: About Fisher's Iris Data Set
@@ -100,11 +100,12 @@ An `as`can be added after the import command to give the package a different nam
 iris = pd.read_csv('iris.csv', header = None)
 ```
 
-Reading the file through pandas by using `pandas.read_csv`reads a comma-separated csv into a DataFrame (I have called mine iris). It provides a tabular structure with labelled axes. 
+Reading the file through pandas by using `pandas.read_csv`reads a comma-separated .csv into a DataFrame (I have called mine *iris*). It provides a tabular structure with labelled axes. 
 
 Note: Make sure to check whether the file has headers. If not, include `header = None`  as seen above. Otherwise pandas will assume that the first row of data is a header.
 
-As the csv file that I am using does not include a header, I have chosen to set a header with column names myself, to make analysis easier going forward:
+As the .csv file that I am using does not include a header, I have chosen to set a header with column names myself, to make analysis easier going forward:
+
 ``` 
 iris.columns = ['sepal_length','sepal_width','petal_length','petal width','species']
 ```
@@ -162,7 +163,7 @@ Iris-setosa        50
 Iris-virginica     50
 Name: species, dtype: int64
 ```
-:arrow_right:  In the next chapter I will explore whethere there are significant differences between the different species. It will be useful to compare the stats of the species against the overThe measurements are evenly distributed across the 3 species.
+:arrow_right:  In the next chapter I will explore whethere there are significant differences between the different species. It will be useful to compare the stats of the species against each other.
 
 Gather some basic statistical information about the dataframe, like the mean, min and max of the columns:
 ```
@@ -197,7 +198,7 @@ virginica = iris[iris['species']=='Iris-virginica']
 versicolor = iris[iris['species']=='Iris-versicolor']
 # see https://www.kaggle.com/willvegapunk/iris-data-set
 ```
-Now I can use the very same commands to get insights into a particular subset of the data. I have chosen to print out the `.mean` values: 
+Now I can use the very same commands to get insights into a particular subset of the data. I have chosen to print out the `.mean()` values: 
 
 ![screenshots mean](https://user-images.githubusercontent.com/35706251/39363592-b9a2bb78-4a22-11e8-9d9c-234016cd0cb1.png)
 
@@ -222,7 +223,7 @@ In order to try out a different approach and get a lot of the basic stats in one
 [insert code once finalized]
 
 ### 5.1 Summary of basic stats
- :bar_chart: With just a quick script, which can be used on different data sets as well, I was able to gather a lot of information about my dataset. I learned that the DataFrame has **150 rows, 5 columns** and contains **50 measurements each** of **Petal Length, Petal Width, Sepal Length, Sepal Width** of the **3 Iris species Iris setosa, Iris versicolor and Iris virginica**. By looking at the **mean** it is evident that the sepal is significantly longer and wider than the petal on average. However, the size of both seem to be **correlated**, as there appears to be a strong positive correlation between petal size and sepal length even though this correlation does not seem to extend to the sepal width. As the **min and max** of the different values stretches across quite a large range it will be interesting to slice the data by the different species and see how they differ as well as use visualizations on the data in the next chapter.
+ :bar_chart: With just a quick script, I was able to gather a lot of information about my dataset. I learned that the DataFrame has **150 rows, 5 columns** and contains **50 measurements each** of **Petal Length, Petal Width, Sepal Length, Sepal Width** of the **3 Iris species Iris setosa, Iris versicolor and Iris virginica**. By looking at the **mean** it is evident that the sepal is significantly longer and wider than the petal on average. However, the size of both seem to be **correlated**, as there appears to be a strong positive correlation between petal size and sepal length even though this correlation does not seem to extend to the sepal width. As the **min and max** of the different values stretches across quite a large range it will be interesting to slice the data by the different species and see how they differ as well as use visualizations on the data in the next chapter.
 
 ## 6. Using visualisation
 
@@ -275,7 +276,7 @@ sb.swarmplot(x='species', y='sepal_width', data=iris)
 
 ### 6.2 Layered Swarmplot
 
-Seaborn allows you to layer plots by bundling differet plots and running them in the same plt.show() command.
+Seaborn allows you to layer plots by bundling differet plots and running them in the same `plt.show()` command.
 With this, it is possible for me to layer the swarmplots for the individual species and assign each its own color. (red = *Iris setosa*, green = *Iris versicolor*, blue = *Iris virginica*)
 
 ```
@@ -287,7 +288,7 @@ sb.swarmplot(color = 'green', data = versicolor, orient = 'v')
 
 *(red = Iris setosa, green = Iris versicolor, blue = Iris virginica)*
 
-:arrow_right: Seeing all the species and characteristics in one chart makes it very evident that the main differenciating feature between the three is the length and width of their petals. The sepals, whereas not identical are a lot close in size and indeed it reconfirms that the only feature in which *Iris setosa*  boasts the biggest size is the sepal width.
+:arrow_right: Seeing all the species and characteristics in one chart makes it very evident that the main differenciating feature between the three is the length and width of their petals. The sepals, whereas not identical are a lot closer in size and indeed it reconfirms that the only feature in which *Iris setosa*  boasts the biggest size is the sepal width.
 
 This can also be observed in the following graphs, which show the measurements per species for sepal and petal using `hue`: 
 
