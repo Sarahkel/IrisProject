@@ -331,7 +331,7 @@ Programming can be intimidating, and many users would expect to need a vast pre-
 
 I showcased how commands built into those packages allow a user to explore the given data set and effortlessly return not only the shape of the dataset in question but also statistical values, such as mean, min and max. I have written a function to print out a nicely formatted basic summary of the dataset as well. Find a summary of the analysis [here](https://github.com/Sarahkel/IrisProject/blob/master/README.md#51-summary-of-basic-stats).
 
-Taking these insights, I have set out to showcase how visualisation can be used to dig deeper and to explore how the different Iris species differ from one another. I was able to show that the three species differ in appearance and was also able to visualize the apparent correlation between certain features. Find a summary of the analysis [here]().
+Taking these insights, I have set out to showcase how visualisation can be used to dig deeper and to explore how the different Iris species differ from one another. I was able to show that the three species differ in appearance and was also able to visualize the apparent correlation between certain features. Find a summary of the analysis [here](https://github.com/Sarahkel/IrisProject#64-summary-of-visualisation-findings).
 
 Knowing that the three species differ in their features gives the user an interesting option to dive deeper and maybe even use Python to explore machine learning with the data set. An interesting notebook on machine learning with the Iris data set can be found on [Kaggle]( https://www.kaggle.com/jchen2186/machine-learning-with-iris-dataset). 
 
